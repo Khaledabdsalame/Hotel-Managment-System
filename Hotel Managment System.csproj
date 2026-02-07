@@ -1,0 +1,53 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <RootNamespace>Hotel_Managment_System</RootNamespace>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="cancel.png" />
+    <None Remove="dashboard-2-512.png" />
+    <None Remove="eye.png" />
+    <None Remove="hidden.png" />
+    <None Remove="home-3-512.png" />
+    <None Remove="notepad-2-512.png" />
+    <None Remove="power-on.png" />
+    <None Remove="receptionist-elegant-suit-work-hours-with-customer.jpg" />
+    <None Remove="settings-4-512.png" />
+    <None Remove="travel.png" />
+    <None Remove="user-4-512.png" />
+    <None Remove="User_Control\supprimer.png" />
+    <None Remove="[CITYPNG.COM]PNG Close X Logo White Icon - 1000x1000.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Data.Sqlite" Version="10.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="AMRConnector">
+      <HintPath>..\..\..\Downloads\AMRConnector.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="dashboard-2-512.png" />
+    <Resource Include="eye.png" />
+    <Resource Include="hidden.png" />
+    <Resource Include="home-3-512.png" />
+    <Resource Include="notepad-2-512.png" />
+    <Resource Include="power-on.png" />
+    <Resource Include="receptionist-elegant-suit-work-hours-with-customer.jpg" />
+    <Resource Include="settings-4-512.png" />
+    <Resource Include="travel.png" />
+    <Resource Include="user-4-512.png" />
+    <Resource Include="User_Control\supprimer.png" />
+    <Resource Include="[CITYPNG.COM]PNG Close X Logo White Icon - 1000x1000.png" />
+  </ItemGroup>
+
+</Project>

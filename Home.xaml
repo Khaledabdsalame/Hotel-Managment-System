@@ -1,0 +1,518 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Hotel_Managment_System"
+        xmlns:User_Control="clr-namespace:Hotel_Managment_System.User_Control" x:Class="Hotel_Managment_System.Home"
+        mc:Ignorable="d"
+        Title="Dashboard" Height="720" Width="1280" ResizeMode="NoResize" WindowState="Maximized" WindowStartupLocation="CenterScreen" WindowStyle="None">
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="Black"/>
+                <GradientStop Color="#FF191717" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Image HorizontalAlignment="Left" Height="46" Margin="20,16,0,0" VerticalAlignment="Top" Width="50" Source="/travel.png" RenderTransformOrigin="0.5,0.5">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-0.288"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+        <Label Content="Hotel Manager                " HorizontalAlignment="Left" Margin="70,23,0,0" VerticalAlignment="Top" Foreground="White" FontFamily="Yu Gothic UI" Height="42" Width="151" FontSize="20" RenderTransformOrigin="0.5,0.5" FontWeight="Bold">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-0.016"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <Button HorizontalAlignment="Left" Margin="47,189,0,0" VerticalAlignment="Top" Height="53" Width="149" Background="{x:Null}" Foreground="White" FontSize="18" FontFamily="Yu Gothic UI" BorderBrush="{x:Null}" Content="       Dashboard" Cursor="Hand">
+            <Button.RenderTransform>
+                <ScaleTransform x:Name="TextScaleBtn1" ScaleX="1" ScaleY="1"/>
+            </Button.RenderTransform>
+            <Button.Style>
+
+                <Style TargetType="{x:Type Button}">
+
+
+                    <Setter Property="Background" Value="LightGray"/>
+                    <Setter Property="BorderBrush" Value="DarkGray"/>
+                    <Setter Property="BorderThickness" Value="1"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}"
+ BorderBrush="{TemplateBinding BorderBrush}"
+ BorderThickness="{TemplateBinding BorderThickness}">
+                                    <ContentPresenter HorizontalAlignment="Center"
+     VerticalAlignment="Top"
+          />
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+
+                    <Style.Triggers>
+                        <Trigger Property="IsPressed" Value="True">
+
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="Opacity"
+      To="0.5" Duration="0:0:0.1"/>
+
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="Opacity"
+To="1" Duration="0:0:0.1"/>
+
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)"
+                                      To="1.2" Duration="0:0:0.2"/>
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)"
+                                      To="1.2" Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)"
+                                      To="1" Duration="0:0:0.2"/>
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)"
+                                      To="1" Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+
+                        </Trigger>
+                    </Style.Triggers>
+
+                </Style>
+            </Button.Style>
+
+        </Button>
+        <Image HorizontalAlignment="Left" Height="22" Margin="47,194,0,0" VerticalAlignment="Top" Width="27" Source="/dashboard-2-512.png"/>
+        <Button HorizontalAlignment="Left" Margin="47,247,0,0" VerticalAlignment="Top" Height="52" Width="149" Background="{x:Null}" Foreground="White" FontSize="18" FontFamily="Yu Gothic UI" BorderBrush="{x:Null}" Content="Client" Cursor="Hand">
+            <Button.RenderTransform>
+                <ScaleTransform x:Name="TextScaleBtn3" ScaleX="1" ScaleY="1"/>
+            </Button.RenderTransform>
+            <Button.Style>
+
+                <Style TargetType="{x:Type Button}">
+
+
+                    <Setter Property="Background" Value="LightGray"/>
+                    <Setter Property="BorderBrush" Value="DarkGray"/>
+                    <Setter Property="BorderThickness" Value="1"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}"
+ BorderBrush="{TemplateBinding BorderBrush}"
+ BorderThickness="{TemplateBinding BorderThickness}">
+                                    <ContentPresenter HorizontalAlignment="Center"
+     VerticalAlignment="Top"
+          />
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+
+                    <Style.Triggers>
+                        <Trigger Property="IsPressed" Value="True">
+
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="Opacity"
+      To="0.5" Duration="0:0:0.1"/>
+
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="Opacity"
+To="1" Duration="0:0:0.1"/>
+
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)"
+                                      To="1.2" Duration="0:0:0.2"/>
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)"
+                                      To="1.2" Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)"
+                                      To="1" Duration="0:0:0.2"/>
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)"
+                                      To="1" Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+
+                        </Trigger>
+                    </Style.Triggers>
+
+                </Style>
+            </Button.Style>
+
+        </Button>
+        <Image HorizontalAlignment="Left" Height="22" Margin="47,251,0,0" VerticalAlignment="Top" Width="27" Source="/user-4-512.png"/>
+        <Button HorizontalAlignment="Left" Margin="47,303,0,0" VerticalAlignment="Top" Height="54" Width="149" Background="{x:Null}" Foreground="White" FontSize="18" FontFamily="Yu Gothic UI" BorderBrush="{x:Null}" Content="Room" Cursor="Hand">
+            <Button.RenderTransform>
+                <ScaleTransform x:Name="TextScaleBtn5" ScaleX="1" ScaleY="1"/>
+            </Button.RenderTransform>
+            <Button.Style>
+
+                <Style TargetType="{x:Type Button}">
+
+
+                    <Setter Property="Background" Value="LightGray"/>
+                    <Setter Property="BorderBrush" Value="DarkGray"/>
+                    <Setter Property="BorderThickness" Value="1"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}"
+ BorderBrush="{TemplateBinding BorderBrush}"
+ BorderThickness="{TemplateBinding BorderThickness}">
+                                    <ContentPresenter HorizontalAlignment="Center"
+     VerticalAlignment="Top"
+          />
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+
+                    <Style.Triggers>
+                        <Trigger Property="IsPressed" Value="True">
+
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="Opacity"
+      To="0.5" Duration="0:0:0.1"/>
+
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="Opacity"
+To="1" Duration="0:0:0.1"/>
+
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)"
+                                      To="1.2" Duration="0:0:0.2"/>
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)"
+                                      To="1.2" Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)"
+                                      To="1" Duration="0:0:0.2"/>
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)"
+                                      To="1" Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+
+                        </Trigger>
+                    </Style.Triggers>
+
+                </Style>
+            </Button.Style>
+
+        </Button>
+        <Image HorizontalAlignment="Left" Height="22" Margin="47,308,0,0" VerticalAlignment="Top" Width="27" Source="/home-3-512.png"/>
+        <Button HorizontalAlignment="Left" Margin="47,358,0,0" VerticalAlignment="Top" Height="54" Width="149" Background="{x:Null}" Foreground="White" FontSize="18" FontFamily="Yu Gothic UI" BorderBrush="{x:Null}" Content="         Reservation" Cursor="Hand">
+            <Button.RenderTransform>
+                <ScaleTransform x:Name="TextScaleBtn6" ScaleX="1" ScaleY="1"/>
+            </Button.RenderTransform>
+            <Button.Style>
+
+                <Style TargetType="{x:Type Button}">
+
+
+                    <Setter Property="Background" Value="LightGray"/>
+                    <Setter Property="BorderBrush" Value="DarkGray"/>
+                    <Setter Property="BorderThickness" Value="1"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}"
+ BorderBrush="{TemplateBinding BorderBrush}"
+ BorderThickness="{TemplateBinding BorderThickness}">
+                                    <ContentPresenter HorizontalAlignment="Center"
+     VerticalAlignment="Top"
+          />
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+
+                    <Style.Triggers>
+                        <Trigger Property="IsPressed" Value="True">
+
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="Opacity"
+      To="0.5" Duration="0:0:0.1"/>
+
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="Opacity"
+To="1" Duration="0:0:0.1"/>
+
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)"
+                                      To="1.2" Duration="0:0:0.2"/>
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)"
+                                      To="1.2" Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)"
+                                      To="1" Duration="0:0:0.2"/>
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)"
+                                      To="1" Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+
+                        </Trigger>
+                    </Style.Triggers>
+
+                </Style>
+            </Button.Style>
+
+        </Button>
+        <Image HorizontalAlignment="Left" Height="22" Margin="47,363,0,0" VerticalAlignment="Top" Width="27" Source="/notepad-2-512.png"/>
+        <Button HorizontalAlignment="Left" Margin="47,415,0,0" VerticalAlignment="Top" Height="54" Width="149" Background="{x:Null}" Foreground="White" FontSize="18" FontFamily="Yu Gothic UI" BorderBrush="{x:Null}" Content="    Settings" Cursor="Hand" Click="Button_Click_2">
+            <Button.RenderTransform>
+                <ScaleTransform x:Name="TextScaleBtn4" ScaleX="1" ScaleY="1"/>
+            </Button.RenderTransform>
+            <Button.Style>
+
+                <Style TargetType="{x:Type Button}">
+
+
+                    <Setter Property="Background" Value="LightGray"/>
+                    <Setter Property="BorderBrush" Value="DarkGray"/>
+                    <Setter Property="BorderThickness" Value="1"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}"
+ BorderBrush="{TemplateBinding BorderBrush}"
+ BorderThickness="{TemplateBinding BorderThickness}">
+                                    <ContentPresenter HorizontalAlignment="Center"
+     VerticalAlignment="Top"
+          />
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+
+                    <Style.Triggers>
+                        <Trigger Property="IsPressed" Value="True">
+
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="Opacity"
+      To="0.5" Duration="0:0:0.1"/>
+
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="Opacity"
+To="1" Duration="0:0:0.1"/>
+
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)"
+                                      To="1.2" Duration="0:0:0.2"/>
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)"
+                                      To="1.2" Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)"
+                                      To="1" Duration="0:0:0.2"/>
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)"
+                                      To="1" Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+
+                        </Trigger>
+                    </Style.Triggers>
+
+                </Style>
+            </Button.Style>
+
+        </Button>
+        <Image HorizontalAlignment="Left" Height="22" Margin="47,420,0,0" VerticalAlignment="Top" Width="27" Source="/settings-4-512.png"/>
+        <Label Content="Welcome Back :" HorizontalAlignment="Left" Margin="250,90,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="White" FontFamily="Yu Gothic UI" FontSize="25" Width="190" FontWeight="Bold"/>
+        <TextBlock HorizontalAlignment="Left" Margin="1067,11,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="19" Width="164" Foreground="White" x:Name="Date" FontWeight="Bold" FontSize="14"/>
+        <Label Content="" HorizontalAlignment="Left" Margin="440,90,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="White" FontFamily="Yu Gothic UI" FontSize="25" Width="496" FontWeight="Bold" x:Name="UserName"/>
+        <Button Content="" HorizontalAlignment="Left" Margin="1236,8,0,0" VerticalAlignment="Top" Height="25" Width="24" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="Button_Click_1" Cursor="Hand">
+            <Button.Background>
+                <ImageBrush ImageSource="/power-on.png"/>
+            </Button.Background>
+            <Button.RenderTransform>
+                <ScaleTransform x:Name="TextScaleBtn2" ScaleX="1" ScaleY="1"/>
+            </Button.RenderTransform>
+            <Button.Style>
+
+                <Style TargetType="{x:Type Button}">
+
+
+                    <Setter Property="Background" Value="LightGray"/>
+                    <Setter Property="BorderBrush" Value="DarkGray"/>
+                    <Setter Property="BorderThickness" Value="1"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}"
+ BorderBrush="{TemplateBinding BorderBrush}"
+ BorderThickness="{TemplateBinding BorderThickness}">
+                                    <ContentPresenter HorizontalAlignment="Center"
+     VerticalAlignment="Top"
+          />
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+
+                    <Style.Triggers>
+                        <Trigger Property="IsPressed" Value="True">
+
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="Opacity"
+      To="0.5" Duration="0:0:0.1"/>
+
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="Opacity"
+To="1" Duration="0:0:0.1"/>
+
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)"
+                                      To="1.2" Duration="0:0:0.2"/>
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)"
+                                      To="1.2" Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)"
+                                      To="1" Duration="0:0:0.2"/>
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)"
+                                      To="1" Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+
+                        </Trigger>
+                    </Style.Triggers>
+
+                </Style>
+            </Button.Style>
+
+        </Button>
+        <User_Control:UserControlSettings x:Name="Settings" HorizontalAlignment="Left" Margin="229,133,0,0" VerticalAlignment="Top" Visibility="Hidden" />
+        <User_Control:ClientMnager HorizontalAlignment="Left" Margin="250,148,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
+
+
+
+
+
+    </Grid>
+</Window>

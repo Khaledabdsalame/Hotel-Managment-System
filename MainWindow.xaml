@@ -1,0 +1,267 @@
+﻿<Window x:Class="Hotel_Managment_System.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Hotel_Managment_System"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True" ResizeMode="CanResize">
+    <Window.Resources>
+
+    </Window.Resources>
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="Black"/>
+                <GradientStop Color="#FF191717" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+
+        <Label Content="Username :" HorizontalAlignment="Left" Margin="504,154,0,267" Height="29" Foreground="White" FontFamily="Yu Gothic UI" FontWeight="Bold"/>
+        <Label Content="Password : " HorizontalAlignment="Left" Margin="504,217,0,204" Height="29" Foreground="White" FontFamily="Yu Gothic UI" FontWeight="Bold"/>
+        <TextBox x:Name="UsrnameFiled" HorizontalAlignment="Left" Margin="504,188,0,238" TextWrapping="NoWrap" Width="270" BorderBrush="{x:Null}" SelectionBrush="#FF25439E" FontSize="14" SelectionTextBrush="{x:Null}" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Hidden"/>
+        <PasswordBox x:Name="passwordf" HorizontalAlignment="Left" Margin="504,251,0,175"  Width="270" BorderBrush="{x:Null}" SelectionBrush="#FF25439E" FontSize="14" SelectionTextBrush="{x:Null}"/>
+        <TextBox x:Name="passwordf_Show" TextWrapping="NoWrap" HorizontalAlignment="Left" Margin="504,251,0,175"  Width="270" BorderBrush="{x:Null}" SelectionBrush="#FF25439E" FontSize="14" SelectionTextBrush="{x:Null}" Visibility="Hidden"  VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Hidden"/>
+        <Button
+    Content="Log In"
+    Width="270"
+    Height="34"
+    FontFamily="Yu Gothic UI"
+    FontWeight="Bold"
+    FontSize="14"
+    Foreground="White"
+    BorderThickness="0"
+    Focusable="False"
+    OverridesDefaultStyle="True" Margin="504,308,26,108"
+    Cursor="Hand" Click="Button_Click">
+
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+
+                    <Border x:Name="border"
+                    CornerRadius="6"
+                    Background="#FF25C6DC"
+                    RenderTransformOrigin="0.5,0.5">
+
+                        <Border.RenderTransform>
+                            <ScaleTransform ScaleX="1" ScaleY="1"/>
+                        </Border.RenderTransform>
+
+                        <ContentPresenter
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"/>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+
+                        <!-- HOVER ENTER -->
+                        <EventTrigger RoutedEvent="MouseEnter">
+                            <BeginStoryboard HandoffBehavior="SnapshotAndReplace">
+                                <Storyboard>
+                                    <DoubleAnimation
+                                Storyboard.TargetName="border"
+                                Storyboard.TargetProperty="RenderTransform.ScaleX"
+                                To="1.04"
+                                Duration="0:0:0.15"/>
+                                    <DoubleAnimation
+                                Storyboard.TargetName="border"
+                                Storyboard.TargetProperty="RenderTransform.ScaleY"
+                                To="1.04"
+                                Duration="0:0:0.15"/>
+                                    <ColorAnimation
+                                Storyboard.TargetName="border"
+                                Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                To="#FF3ED8EE"
+                                Duration="0:0:0.15"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+
+                        <!-- HOVER LEAVE -->
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <BeginStoryboard HandoffBehavior="SnapshotAndReplace">
+                                <Storyboard>
+                                    <DoubleAnimation
+                                Storyboard.TargetName="border"
+                                Storyboard.TargetProperty="RenderTransform.ScaleX"
+                                To="1"
+                                Duration="0:0:0.15"/>
+                                    <DoubleAnimation
+                                Storyboard.TargetName="border"
+                                Storyboard.TargetProperty="RenderTransform.ScaleY"
+                                To="1"
+                                Duration="0:0:0.15"/>
+                                    <ColorAnimation
+                                Storyboard.TargetName="border"
+                                Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                To="#FF25C6DC"
+                                Duration="0:0:0.15"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+
+                        <!-- PRESSED -->
+                        <Trigger Property="IsPressed" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                    Storyboard.TargetName="border"
+                                    Storyboard.TargetProperty="RenderTransform.ScaleX"
+                                    To="0.96"
+                                    Duration="0:0:0.06"/>
+                                        <DoubleAnimation
+                                    Storyboard.TargetName="border"
+                                    Storyboard.TargetProperty="RenderTransform.ScaleY"
+                                    To="0.96"
+                                    Duration="0:0:0.06"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                        </Trigger>
+
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <Image HorizontalAlignment="Left" Height="450" VerticalAlignment="Center" Width="481" Source="/receptionist-elegant-suit-work-hours-with-customer.jpg" Stretch="UniformToFill" StretchDirection="UpOnly"/>
+        <Label Content="Hotel Manager" Margin="542,91,0,0" Foreground="White" Height="46" Width="194" FontSize="27" FontFamily="Yu Gothic UI" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <Grid Margin="0,0,0,427" MouseLeftButtonDown="TitleBar_MouseLeftButtonDown" Background="Transparent"
+>
+
+            <Button HorizontalAlignment="Left" Margin="777,4,0,0" VerticalAlignment="Top" Height="20" Width="20" RenderTransformOrigin="0.5,0.5" FontWeight="Bold" FontSize="10" FontFamily="Arial Black" BorderBrush="{x:Null}" Click="Button_Click_2" >
+                <Button.Background>
+                    <ImageBrush ImageSource="/[CITYPNG.COM]PNG Close X Logo White Icon - 1000x1000.png"/>
+                </Button.Background>
+                <Button.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-0.204"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Button.RenderTransform>
+                <Button.Style>
+
+                    <Style TargetType="Button">
+
+
+                        <Setter Property="Background" Value="LightGray"/>
+                        <Setter Property="BorderBrush" Value="DarkGray"/>
+                        <Setter Property="BorderThickness" Value="1"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="{TemplateBinding Background}"
+BorderBrush="{TemplateBinding BorderBrush}"
+BorderThickness="{TemplateBinding BorderThickness}">
+                                        <ContentPresenter HorizontalAlignment="Center"
+    VerticalAlignment="Top"
+         />
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="Opacity"
+To="0.5" Duration="0:0:0.2"/>
+
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="Opacity"
+To="1" Duration="0:0:0.2"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
+
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+            <Button HorizontalAlignment="Left" Margin="756,3,0,0" VerticalAlignment="Top" Height="20" Width="20" BorderBrush="{x:Null}" Background="{x:Null}" Content="—" Foreground="White" FontWeight="Bold" FontFamily="Segoe UI Black" Click="Button_Click_1" >
+
+                <Button.Style>
+
+                    <Style TargetType="Button">
+
+
+                        <Setter Property="Background" Value="LightGray"/>
+                        <Setter Property="BorderBrush" Value="DarkGray"/>
+                        <Setter Property="BorderThickness" Value="1"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="{TemplateBinding Background}"
+BorderBrush="{TemplateBinding BorderBrush}"
+BorderThickness="{TemplateBinding BorderThickness}">
+                                        <ContentPresenter HorizontalAlignment="Center"
+    VerticalAlignment="Top"
+         />
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="Opacity"
+To="0.5" Duration="0:0:0.2"/>
+
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="Opacity"
+To="1" Duration="0:0:0.2"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
+
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+
+            </Button>
+        </Grid>
+        <ToggleButton
+    Width="20"
+    Height="20"
+    FocusVisualStyle="{x:Null}"
+    OverridesDefaultStyle="True" Margin="748,253,32,177" Checked="ToggleButton_Checked" Unchecked="ToggleEye_Unchecked">
+
+            <ToggleButton.Template>
+                <ControlTemplate TargetType="ToggleButton">
+                    <Image x:Name="img" Source="/hidden.png"/>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="img"
+                            Property="Source"
+                            Value="/eye.png"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </ToggleButton.Template>
+        </ToggleButton>
+     
+
+
+
+    </Grid>
+</Window>

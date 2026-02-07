@@ -1,0 +1,244 @@
+﻿<UserControl x:Class="Hotel_Managment_System.User_Control.ClientMnager"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Hotel_Managment_System.User_Control"
+             mc:Ignorable="d" 
+             Height="542" Width="918">
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="Black"/>
+                <GradientStop Color="#FF191717" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <TabControl Margin="64,68,66,40" TabStripPlacement="Bottom" BorderBrush="Black">
+            <TabControl.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="#FF191717" Offset="1"/>
+                </LinearGradientBrush>
+            </TabControl.Background>
+            <TabItem Header="Clients" BorderBrush="{x:Null}" FontWeight="Bold" FontFamily="Yu Gothic UI">
+                
+                <Grid Margin="0,0,0,2">
+                    <Grid.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="Black"/>
+                            <GradientStop Color="#FF191717" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Grid.Background>
+                    <Label Content="Add Clients :" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Foreground="White" FontSize="16" FontFamily="Yu Gothic UI" FontWeight="Bold"/>
+
+                    <TextBox x:Name="firstnamecl" HorizontalAlignment="Left" Margin="138,147,0,230" TextWrapping="NoWrap" Width="210" BorderBrush="{x:Null}" SelectionBrush="#FF25439E" FontSize="14" SelectionTextBrush="{x:Null}" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Hidden"/>
+                    <Label Content="First Name :" HorizontalAlignment="Left" Margin="138,111,0,264" Height="29" Foreground="White" FontFamily="Yu Gothic UI" FontWeight="Bold" FontSize="16"/>
+                    <Button
+                        Content="Add Clients"
+                        Height="34"
+                        FontFamily="Yu Gothic UI"
+                        FontWeight="Bold"
+                        FontSize="14"
+                        Foreground="White"
+                        BorderThickness="0"
+                        Focusable="False"
+                        OverridesDefaultStyle="True" Margin="138,347,496,23"
+                        Cursor="Hand">
+
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+
+                                <Border x:Name="border"
+                                    CornerRadius="6"
+                                    Background="#FF25C6DC"
+                                    RenderTransformOrigin="0.5,0.5">
+
+                                    <Border.RenderTransform>
+                                        <ScaleTransform ScaleX="1" ScaleY="1"/>
+                                    </Border.RenderTransform>
+
+                                    <ContentPresenter
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"/>
+                                </Border>
+
+                                <ControlTemplate.Triggers>
+
+                                    <!-- HOVER ENTER -->
+                                    <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                        <BeginStoryboard HandoffBehavior="SnapshotAndReplace">
+                                            <Storyboard>
+                                                <DoubleAnimation
+                                                    Storyboard.TargetName="border"
+                                                    Storyboard.TargetProperty="RenderTransform.ScaleX"
+                                                    To="1.04"
+                                                    Duration="0:0:0.15"/>
+                                                <DoubleAnimation
+                                                    Storyboard.TargetName="border"
+                                                    Storyboard.TargetProperty="RenderTransform.ScaleY"
+                                                    To="1.04"
+                                                    Duration="0:0:0.15"/>
+                                                <ColorAnimation
+                                                    Storyboard.TargetName="border"
+                                                    Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                    To="#FF3ED8EE"
+                                                    Duration="0:0:0.15"/>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger>
+
+                                    <!-- HOVER LEAVE -->
+                                    <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                                        <BeginStoryboard HandoffBehavior="SnapshotAndReplace">
+                                            <Storyboard>
+                                                <DoubleAnimation
+                                                    Storyboard.TargetName="border"
+                                                    Storyboard.TargetProperty="RenderTransform.ScaleX"
+                                                    To="1"
+                                                    Duration="0:0:0.15"/>
+                                                <DoubleAnimation
+                                                    Storyboard.TargetName="border"
+                                                    Storyboard.TargetProperty="RenderTransform.ScaleY"
+                                                    To="1"
+                                                    Duration="0:0:0.15"/>
+                                                <ColorAnimation
+                                                    Storyboard.TargetName="border"
+                                                    Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                    To="#FF25C6DC"
+                                                    Duration="0:0:0.15"/>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger>
+
+                                    <!-- PRESSED -->
+                                    <Trigger Property="IsPressed" Value="True">
+                                        <Trigger.EnterActions>
+                                            <BeginStoryboard>
+                                                <Storyboard>
+                                                    <DoubleAnimation
+                                                        Storyboard.TargetName="border"
+                                                        Storyboard.TargetProperty="RenderTransform.ScaleX"
+                                                        To="0.96"
+                                                        Duration="0:0:0.06"/>
+                                                    <DoubleAnimation
+                                                        Storyboard.TargetName="border"
+                                                        Storyboard.TargetProperty="RenderTransform.ScaleY"
+                                                        To="0.96"
+                                                        Duration="0:0:0.06"/>
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </Trigger.EnterActions>
+                                    </Trigger>
+
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                    <TextBox x:Name="lastnamecl" HorizontalAlignment="Left" Margin="415,149,0,230" TextWrapping="NoWrap" Width="210" BorderBrush="{x:Null}" SelectionBrush="#FF25439E" FontSize="14" SelectionTextBrush="{x:Null}" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Hidden"/>
+                    <Label Content="Last Name :" HorizontalAlignment="Left" Margin="415,111,0,264" Height="29" Foreground="White" FontFamily="Yu Gothic UI" FontWeight="Bold" FontSize="16"/>
+                    <Label Content="Phone :" HorizontalAlignment="Left" Margin="138,252,0,123" Height="29" Foreground="White" FontFamily="Yu Gothic UI" FontWeight="Bold" FontSize="16"/>
+                    <TextBox x:Name="phonecl" HorizontalAlignment="Left" Margin="138,287,0,92" TextWrapping="NoWrap" Width="210" BorderBrush="{x:Null}" SelectionBrush="#FF25439E" FontSize="14" SelectionTextBrush="{x:Null}" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Hidden"/>
+                    <Label Content="National ID : " HorizontalAlignment="Left" Margin="415,252,0,123" Height="29" Foreground="White" FontFamily="Yu Gothic UI" FontWeight="Bold" FontSize="16"/>
+                    <TextBox x:Name="National_ID" HorizontalAlignment="Left" Margin="415,286,0,92" TextWrapping="NoWrap" Width="210" BorderBrush="{x:Null}" SelectionBrush="#FF25439E" FontSize="14" SelectionTextBrush="{x:Null}" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Hidden"/>
+                    <TextBox x:Name="adress" HorizontalAlignment="Left" Margin="138,222,0,157" TextWrapping="NoWrap" Width="487" BorderBrush="{x:Null}" SelectionBrush="#FF25439E" FontSize="14" SelectionTextBrush="{x:Null}" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Hidden"/>
+                    <Label Content="Adresse : " HorizontalAlignment="Left" Margin="138,188,0,187" Height="29" Foreground="White" FontFamily="Yu Gothic UI" FontWeight="Bold" FontSize="16"/>
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="Manage Clients" BorderBrush="{x:Null}" FontWeight="Bold" FontFamily="Yu Gothic UI">
+                <Grid>
+                    <TextBox x:Name="Firstname" HorizontalAlignment="Left" Margin="34,108,0,272" TextWrapping="NoWrap" Width="192" BorderBrush="{x:Null}" SelectionBrush="#FF25439E" FontSize="14" SelectionTextBrush="{x:Null}" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Hidden"/>
+                    <Label Content="First Name :" HorizontalAlignment="Left" Margin="34,74,0,303" Height="29" Foreground="White" FontFamily="Yu Gothic UI" FontWeight="Bold" FontSize="16"/>
+                    <Label Content="Search Clients :" HorizontalAlignment="Left" Margin="10,10,0,367" Height="29" Foreground="White" FontFamily="Yu Gothic UI" FontWeight="Bold" FontSize="16"/>
+                    <Label Content="Last Name :" HorizontalAlignment="Left" Margin="256,74,0,303" Height="29" Foreground="White" FontFamily="Yu Gothic UI" FontWeight="Bold" FontSize="16"/>
+                    <TextBox x:Name="lastname" HorizontalAlignment="Left" Margin="256,108,0,272" TextWrapping="NoWrap" Width="192" BorderBrush="{x:Null}" SelectionBrush="#FF25439E" FontSize="14" SelectionTextBrush="{x:Null}" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Hidden"/>
+                    <Label Content="National ID :" HorizontalAlignment="Left" Margin="478,74,0,303" Height="29" Foreground="White" FontFamily="Yu Gothic UI" FontWeight="Bold" FontSize="16"/>
+                    <TextBox x:Name="nationalid" HorizontalAlignment="Left" Margin="478,108,0,272" TextWrapping="NoWrap" Width="192" BorderBrush="{x:Null}" SelectionBrush="#FF25439E" FontSize="14" SelectionTextBrush="{x:Null}" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Hidden"/>
+                    <TextBox x:Name="Phonesh" HorizontalAlignment="Left" Margin="34,177,0,203" TextWrapping="NoWrap" Width="192" BorderBrush="{x:Null}" SelectionBrush="#FF25439E" FontSize="14" SelectionTextBrush="{x:Null}" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Hidden"/>
+                    <Label Content="Phone :" HorizontalAlignment="Left" Margin="34,139,0,238" Height="29" Foreground="White" FontFamily="Yu Gothic UI" FontWeight="Bold" FontSize="16"/>
+                    <DataGrid x:Name="ClientsGrid"
+                        Margin="0,229,0,0"
+                        Foreground="#FF191717"
+                        Background="White"
+                        HeadersVisibility="Column"
+                        HorizontalGridLinesBrush="Black"
+                        VerticalGridLinesBrush="Black"
+                        MinColumnWidth="110"
+                        
+                        IsReadOnly="False"
+                        AutoGenerateColumns="False"
+                        CanUserAddRows="False">
+
+                        <DataGrid.Columns>
+
+                            <!-- ID (غير قابل للتعديل) -->
+                            <DataGridTextColumn Header="Client ID"
+                                Binding="{Binding ID}"
+                                IsReadOnly="True"/>
+                            <DataGridTextColumn Header="National ID" Binding="{Binding LastName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                            <!-- Editable columns -->
+                            <DataGridTextColumn Header="First Name"
+                                Binding="{Binding Username, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                            <DataGridTextColumn Header="Last Name"
+                                Binding="{Binding Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                            <DataGridTextColumn Header="Phone"
+                                Binding="{Binding Phone, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                            <DataGridTextColumn Header="Adresse"
+                                Binding="{Binding FirstName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                            
+                            
+                                
+
+                            <!-- Delete Button -->
+                            <DataGridTemplateColumn >
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button
+                                            Width="20"
+                                             Height="20" BorderBrush="White" Foreground="White" Cursor="Hand">
+                                            <Button.Background>
+                                                <ImageBrush ImageSource="/User_Control/supprimer.png"/>
+                                            </Button.Background>
+                                            <Button.Style>
+
+                                                <Style TargetType="{x:Type Button}">
+
+
+                                                    <Setter Property="Background" Value="LightGray"/>
+                                                    <Setter Property="BorderBrush" Value="DarkGray"/>
+                                                    <Setter Property="BorderThickness" Value="1"/>
+                                                    <Setter Property="Template">
+                                                        <Setter.Value>
+                                                            <ControlTemplate TargetType="{x:Type Button}">
+                                                                <Border Background="{TemplateBinding Background}"
+                                                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                                                    BorderThickness="{TemplateBinding BorderThickness}">
+                                                                    <ContentPresenter HorizontalAlignment="Center"
+                                                                        VerticalAlignment="Top"
+         />
+                                                                </Border>
+                                                            </ControlTemplate>
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                </Style>
+                                            </Button.Style>
+                                        </Button>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+
+                </Grid>
+
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</UserControl>
