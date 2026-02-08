@@ -43,7 +43,7 @@
                         BorderThickness="0"
                         Focusable="False"
                         OverridesDefaultStyle="True" Margin="138,347,496,23"
-                        Cursor="Hand">
+                        Cursor="Hand" Click="Button_Click">
 
                         <Button.Template>
                             <ControlTemplate TargetType="{x:Type Button}">
@@ -137,7 +137,7 @@
                     <TextBox x:Name="lastnamecl" HorizontalAlignment="Left" Margin="415,149,0,230" TextWrapping="NoWrap" Width="210" BorderBrush="{x:Null}" SelectionBrush="#FF25439E" FontSize="14" SelectionTextBrush="{x:Null}" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Hidden"/>
                     <Label Content="Last Name :" HorizontalAlignment="Left" Margin="415,111,0,264" Height="29" Foreground="White" FontFamily="Yu Gothic UI" FontWeight="Bold" FontSize="16"/>
                     <Label Content="Phone :" HorizontalAlignment="Left" Margin="138,252,0,123" Height="29" Foreground="White" FontFamily="Yu Gothic UI" FontWeight="Bold" FontSize="16"/>
-                    <TextBox x:Name="phonecl" HorizontalAlignment="Left" Margin="138,287,0,92" TextWrapping="NoWrap" Width="210" BorderBrush="{x:Null}" SelectionBrush="#FF25439E" FontSize="14" SelectionTextBrush="{x:Null}" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Hidden"/>
+                    <TextBox x:Name="phonecl" HorizontalAlignment="Left" Margin="138,287,0,92" TextWrapping="NoWrap" Width="210" BorderBrush="{x:Null}" SelectionBrush="#FF25439E" FontSize="14" SelectionTextBrush="{x:Null}" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Hidden" PreviewTextInput="Phone_OnlyNumbers"/>
                     <Label Content="National ID : " HorizontalAlignment="Left" Margin="415,252,0,123" Height="29" Foreground="White" FontFamily="Yu Gothic UI" FontWeight="Bold" FontSize="16"/>
                     <TextBox x:Name="National_ID" HorizontalAlignment="Left" Margin="415,286,0,92" TextWrapping="NoWrap" Width="210" BorderBrush="{x:Null}" SelectionBrush="#FF25439E" FontSize="14" SelectionTextBrush="{x:Null}" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Hidden"/>
                     <TextBox x:Name="adress" HorizontalAlignment="Left" Margin="138,222,0,157" TextWrapping="NoWrap" Width="487" BorderBrush="{x:Null}" SelectionBrush="#FF25439E" FontSize="14" SelectionTextBrush="{x:Null}" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Hidden"/>
@@ -147,14 +147,14 @@
             </TabItem>
             <TabItem Header="Manage Clients" BorderBrush="{x:Null}" FontWeight="Bold" FontFamily="Yu Gothic UI">
                 <Grid>
-                    <TextBox x:Name="Firstname" HorizontalAlignment="Left" Margin="34,108,0,272" TextWrapping="NoWrap" Width="192" BorderBrush="{x:Null}" SelectionBrush="#FF25439E" FontSize="14" SelectionTextBrush="{x:Null}" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Hidden"/>
+                    <TextBox x:Name="Firstname" HorizontalAlignment="Left" Margin="34,108,0,272" TextWrapping="NoWrap" Width="192" BorderBrush="{x:Null}" SelectionBrush="#FF25439E" FontSize="14" SelectionTextBrush="{x:Null}" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Hidden" TextChanged="Firstname_TextChanged"/>
                     <Label Content="First Name :" HorizontalAlignment="Left" Margin="34,74,0,303" Height="29" Foreground="White" FontFamily="Yu Gothic UI" FontWeight="Bold" FontSize="16"/>
                     <Label Content="Search Clients :" HorizontalAlignment="Left" Margin="10,10,0,367" Height="29" Foreground="White" FontFamily="Yu Gothic UI" FontWeight="Bold" FontSize="16"/>
                     <Label Content="Last Name :" HorizontalAlignment="Left" Margin="256,74,0,303" Height="29" Foreground="White" FontFamily="Yu Gothic UI" FontWeight="Bold" FontSize="16"/>
-                    <TextBox x:Name="lastname" HorizontalAlignment="Left" Margin="256,108,0,272" TextWrapping="NoWrap" Width="192" BorderBrush="{x:Null}" SelectionBrush="#FF25439E" FontSize="14" SelectionTextBrush="{x:Null}" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Hidden"/>
+                    <TextBox x:Name="lastname" HorizontalAlignment="Left" Margin="256,108,0,272" TextWrapping="NoWrap" Width="192" BorderBrush="{x:Null}" SelectionBrush="#FF25439E" FontSize="14" SelectionTextBrush="{x:Null}" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Hidden" TextChanged="lastname_TextChanged"/>
                     <Label Content="National ID :" HorizontalAlignment="Left" Margin="478,74,0,303" Height="29" Foreground="White" FontFamily="Yu Gothic UI" FontWeight="Bold" FontSize="16"/>
-                    <TextBox x:Name="nationalid" HorizontalAlignment="Left" Margin="478,108,0,272" TextWrapping="NoWrap" Width="192" BorderBrush="{x:Null}" SelectionBrush="#FF25439E" FontSize="14" SelectionTextBrush="{x:Null}" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Hidden"/>
-                    <TextBox x:Name="Phonesh" HorizontalAlignment="Left" Margin="34,177,0,203" TextWrapping="NoWrap" Width="192" BorderBrush="{x:Null}" SelectionBrush="#FF25439E" FontSize="14" SelectionTextBrush="{x:Null}" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Hidden"/>
+                    <TextBox x:Name="nationalid" HorizontalAlignment="Left" Margin="478,108,0,272" TextWrapping="NoWrap" Width="192" BorderBrush="{x:Null}" SelectionBrush="#FF25439E" FontSize="14" SelectionTextBrush="{x:Null}" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Hidden" TextChanged="nationalid_TextChanged"/>
+                    <TextBox x:Name="Phonesh" HorizontalAlignment="Left" Margin="34,177,0,203" TextWrapping="NoWrap" Width="192" BorderBrush="{x:Null}" SelectionBrush="#FF25439E" FontSize="14" SelectionTextBrush="{x:Null}" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Hidden" TextChanged="Phonesh_TextChanged"/>
                     <Label Content="Phone :" HorizontalAlignment="Left" Margin="34,139,0,238" Height="29" Foreground="White" FontFamily="Yu Gothic UI" FontWeight="Bold" FontSize="16"/>
                     <DataGrid x:Name="ClientsGrid"
                         Margin="0,229,0,0"
@@ -175,20 +175,20 @@
                             <DataGridTextColumn Header="Client ID"
                                 Binding="{Binding ID}"
                                 IsReadOnly="True"/>
-                            <DataGridTextColumn Header="National ID" Binding="{Binding LastName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                            <DataGridTextColumn Header="National ID" Binding="{Binding NationalId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
                             <!-- Editable columns -->
                             <DataGridTextColumn Header="First Name"
-                                Binding="{Binding Username, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                Binding="{Binding FirstName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
                             <DataGridTextColumn Header="Last Name"
-                                Binding="{Binding Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                Binding="{Binding LastName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
                             <DataGridTextColumn Header="Phone"
                                 Binding="{Binding Phone, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
                             <DataGridTextColumn Header="Adresse"
-                                Binding="{Binding FirstName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                Binding="{Binding Adress, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                             
                             
                                 
@@ -199,7 +199,7 @@
                                     <DataTemplate>
                                         <Button
                                             Width="20"
-                                             Height="20" BorderBrush="White" Foreground="White" Cursor="Hand">
+                                             Height="20" BorderBrush="White" Foreground="White" Cursor="Hand" Click="DeleteUser_Click">
                                             <Button.Background>
                                                 <ImageBrush ImageSource="/User_Control/supprimer.png"/>
                                             </Button.Background>

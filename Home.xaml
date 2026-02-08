@@ -508,7 +508,7 @@ To="1" Duration="0:0:0.1"/>
 
         </Button>
         <User_Control:UserControlSettings x:Name="Settings" HorizontalAlignment="Left" Margin="229,133,0,0" VerticalAlignment="Top" Visibility="Hidden" />
-        <User_Control:ClientMnager HorizontalAlignment="Left" Margin="250,148,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
+        <User_Control:ClientMnager HorizontalAlignment="Left" Margin="250,148,0,0" VerticalAlignment="Top" Visibility="Visible"/>
 
 
 
