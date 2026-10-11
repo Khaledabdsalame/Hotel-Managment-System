@@ -4,6 +4,8 @@
              xmlns:local="clr-namespace:Hotel_Managment_System"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        
+           
+
     </Application.Resources>
 </Application>

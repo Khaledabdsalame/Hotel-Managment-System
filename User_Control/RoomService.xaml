@@ -1,0 +1,256 @@
+﻿<UserControl x:Class="Hotel_Managment_System.User_Control.RoomService"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Hotel_Managment_System.User_Control"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             mc:Ignorable="d" 
+             d:DesignHeight="542" d:DesignWidth="918">
+    <UserControl.Resources>
+        <ObjectDataProvider MethodName="GetValues"
+                        ObjectType="{x:Type sys:Enum}"
+                        x:Key="RoomStatusValues">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="local:RoomStatus"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="Black"/>
+                <GradientStop Color="#FF191717" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <TabControl Margin="64,68,66,40" TabStripPlacement="Bottom" BorderBrush="Black">
+            <TabControl.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="#FF191717" Offset="1"/>
+                </LinearGradientBrush>
+            </TabControl.Background>
+            <TabItem Header="Add Rooms" BorderBrush="{x:Null}" FontWeight="Bold" FontFamily="Yu Gothic UI">
+                <Grid Margin="0,0,0,2">
+                    <Grid.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="Black"/>
+                            <GradientStop Color="#FF191717" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Grid.Background>
+                    <Label Content="Room Number :" HorizontalAlignment="Left" Margin="200,130,0,245" Height="29" Foreground="White" FontFamily="Yu Gothic UI" FontWeight="Bold" FontSize="16"/>
+                    <Label Content="Room Type :" HorizontalAlignment="Left" Margin="426,130,0,245" Height="29" Foreground="White" FontFamily="Yu Gothic UI" FontWeight="Bold" FontSize="16"/>
+                    <TextBox x:Name="Room_Number" HorizontalAlignment="Left" Margin="198,164,0,215" TextWrapping="NoWrap" Width="193" BorderBrush="{x:Null}" SelectionBrush="#FF25439E" FontSize="14" SelectionTextBrush="{x:Null}" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Hidden" PreviewTextInput="OnlyNumbers" />
+                    <Button
+                        Content="Add Room"
+                        Height="34"
+                        FontFamily="Yu Gothic UI"
+                        FontWeight="Bold"
+                        FontSize="14"
+                        Foreground="White"
+                        BorderThickness="0"
+                        Focusable="False"
+                        OverridesDefaultStyle="True" Margin="200,306,434,64"
+                        Cursor="Hand" Click="Button_Click">
+
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+
+                                <Border x:Name="border"
+                                    CornerRadius="6"
+                                    Background="#FF25C6DC"
+                                    RenderTransformOrigin="0.5,0.5">
+
+                                    <Border.RenderTransform>
+                                        <ScaleTransform ScaleX="1" ScaleY="1"/>
+                                    </Border.RenderTransform>
+
+                                    <ContentPresenter
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"/>
+                                </Border>
+
+                                <ControlTemplate.Triggers>
+
+                                    <!-- HOVER ENTER -->
+                                    <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                        <BeginStoryboard HandoffBehavior="SnapshotAndReplace">
+                                            <Storyboard>
+                                                <DoubleAnimation
+                                                    Storyboard.TargetName="border"
+                                                    Storyboard.TargetProperty="RenderTransform.ScaleX"
+                                                    To="1.04"
+                                                    Duration="0:0:0.15"/>
+                                                <DoubleAnimation
+                                                    Storyboard.TargetName="border"
+                                                    Storyboard.TargetProperty="RenderTransform.ScaleY"
+                                                    To="1.04"
+                                                    Duration="0:0:0.15"/>
+                                                <ColorAnimation
+                                                    Storyboard.TargetName="border"
+                                                    Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                    To="#FF3ED8EE"
+                                                    Duration="0:0:0.15"/>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger>
+
+                                    <!-- HOVER LEAVE -->
+                                    <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                                        <BeginStoryboard HandoffBehavior="SnapshotAndReplace">
+                                            <Storyboard>
+                                                <DoubleAnimation
+                                                    Storyboard.TargetName="border"
+                                                    Storyboard.TargetProperty="RenderTransform.ScaleX"
+                                                    To="1"
+                                                    Duration="0:0:0.15"/>
+                                                <DoubleAnimation
+                                                    Storyboard.TargetName="border"
+                                                    Storyboard.TargetProperty="RenderTransform.ScaleY"
+                                                    To="1"
+                                                    Duration="0:0:0.15"/>
+                                                <ColorAnimation
+                                                    Storyboard.TargetName="border"
+                                                    Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                    To="#FF25C6DC"
+                                                    Duration="0:0:0.15"/>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger>
+
+                                    <!-- PRESSED -->
+                                    <Trigger Property="IsPressed" Value="True">
+                                        <Trigger.EnterActions>
+                                            <BeginStoryboard>
+                                                <Storyboard>
+                                                    <DoubleAnimation
+                                                        Storyboard.TargetName="border"
+                                                        Storyboard.TargetProperty="RenderTransform.ScaleX"
+                                                        To="0.96"
+                                                        Duration="0:0:0.06"/>
+                                                    <DoubleAnimation
+                                                        Storyboard.TargetName="border"
+                                                        Storyboard.TargetProperty="RenderTransform.ScaleY"
+                                                        To="0.96"
+                                                        Duration="0:0:0.06"/>
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </Trigger.EnterActions>
+                                    </Trigger>
+
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                    <TextBox x:Name="Room_Type" HorizontalAlignment="Left" Margin="423,166,0,211" TextWrapping="NoWrap" Width="193" BorderBrush="{x:Null}" SelectionBrush="#FF25439E" FontSize="14" SelectionTextBrush="{x:Null}" RenderTransformOrigin="0.5,0.5" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Hidden">
+                        <TextBox.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="0.248"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </TextBox.RenderTransform>
+                    </TextBox>
+                    <Label Content="Add Room : " HorizontalAlignment="Left" Margin="10,10,0,364" Foreground="White" FontFamily="Yu Gothic UI" FontWeight="Bold" Width="90" FontSize="16"/>
+                    <TextBox x:Name="Price" HorizontalAlignment="Left" Margin="198,236,0,144" TextWrapping="NoWrap" Width="193" BorderBrush="{x:Null}" SelectionBrush="#FF25439E" FontSize="14" SelectionTextBrush="{x:Null}" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Hidden" PreviewTextInput="OnlyNumbers"/>
+                    <Label Content="Price: " HorizontalAlignment="Left" Margin="198,202,0,173" Height="29" Foreground="White" FontFamily="Yu Gothic UI" FontWeight="Bold" FontSize="16"/>
+                    <Label Content="Status : " HorizontalAlignment="Left" Margin="426,202,0,173" Height="29" Foreground="White" FontFamily="Yu Gothic UI" FontWeight="Bold" FontSize="16"/>
+                    <ComboBox x:Name="Avalaibilty" HorizontalAlignment="Left" Margin="426,236,0,0" VerticalAlignment="Top" Width="191" SelectedIndex="0" Height="24" FontSize="13" >
+                        
+                    </ComboBox>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="Enter" Header="Manage Rooms" BorderBrush="{x:Null}" FontWeight="Bold" FontFamily="Yu Gothic UI">
+                <Grid>
+                    <Label Content="Search Rooms :" HorizontalAlignment="Left" Margin="10,10,0,367" Height="29" Foreground="White" FontFamily="Yu Gothic UI" FontWeight="Bold" FontSize="16"/>
+                    <TextBox x:Name="RoomNumbersh" HorizontalAlignment="Left" Margin="34,111,0,271" TextWrapping="NoWrap" Width="192" BorderBrush="{x:Null}" SelectionBrush="#FF25439E" FontSize="14" SelectionTextBrush="{x:Null}" TextChanged="firstnamesh_TextChanged" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Hidden"/>
+                    <Label Content="Room Number :" HorizontalAlignment="Left" Margin="34,75,0,302" Height="29" Foreground="White" FontFamily="Yu Gothic UI" FontWeight="Bold" Width="132" FontSize="16"/>
+                    <TextBox x:Name="RoomTypeSH" HorizontalAlignment="Left" Margin="264,111,0,271" TextWrapping="NoWrap" Width="192" BorderBrush="{x:Null}" SelectionBrush="#FF25439E" FontSize="14" SelectionTextBrush="{x:Null}" TextChanged="lastnamesh_TextChanged" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Hidden"/>
+                    <Label Content="Room Type:" HorizontalAlignment="Left" Margin="264,75,0,295" Foreground="White" FontFamily="Yu Gothic UI" FontWeight="Bold" Width="114" FontSize="16"/>
+                   
+                    <DataGrid x:Name="RoomGrid"
+                        Margin="0,190,0,0"
+                        Foreground="#FF191717"
+                        Background="White"
+                        HeadersVisibility="Column"
+                        HorizontalGridLinesBrush="Black"
+                        VerticalGridLinesBrush="Black"
+                        MinColumnWidth="110"
+                        RowEditEnding="RoomGrid_RowEditEnding"
+                        IsReadOnly="False"
+                        AutoGenerateColumns="False"
+                        CanUserAddRows="False">
+
+                        <DataGrid.Columns>
+
+                            <!-- ID (غير قابل للتعديل) -->
+                            <DataGridTextColumn Header="Room ID"
+                                Binding="{Binding RoomID}"
+                                IsReadOnly="True"/>
+
+                            <!-- Editable columns -->
+                            <DataGridTextColumn Header="Room Number"
+                                Binding="{Binding RoomNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                            <DataGridTextColumn Header="Room Type"
+                                Binding="{Binding RoomType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                            <DataGridTextColumn Header="Price"
+                                Binding="{Binding PricePerNight, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                            <DataGridComboBoxColumn Header="Status"
+                        SelectedItemBinding="{Binding Status, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                        ItemsSource="{Binding Source={StaticResource RoomStatusValues}}" />
+
+                            <DataGridTemplateColumn >
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button
+                                            Width="20"
+                                            Click="DeleteRoom_Click" Height="20" BorderBrush="White" Foreground="White" Cursor="Hand">
+                                            <Button.Background>
+                                                <ImageBrush ImageSource="/User_Control/supprimer.png"/>
+                                            </Button.Background>
+                                            <Button.Style>
+
+                                                <Style TargetType="{x:Type Button}">
+
+
+                                                    <Setter Property="Background" Value="LightGray"/>
+                                                    <Setter Property="BorderBrush" Value="DarkGray"/>
+                                                    <Setter Property="BorderThickness" Value="1"/>
+                                                    <Setter Property="Template">
+                                                        <Setter.Value>
+                                                            <ControlTemplate TargetType="{x:Type Button}">
+                                                                <Border Background="{TemplateBinding Background}"
+                                                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                                                    BorderThickness="{TemplateBinding BorderThickness}">
+                                                                    <ContentPresenter HorizontalAlignment="Center"
+                                                                        VerticalAlignment="Top"
+         />
+                                                                </Border>
+                                                            </ControlTemplate>
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                </Style>
+                                            </Button.Style>
+                                        </Button>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <ComboBox x:Name="AvalaibiltySh" HorizontalAlignment="Left" Margin="494,111,0,0" VerticalAlignment="Top" Width="192" SelectedIndex="0" Height="24" RenderTransformOrigin="0.497,0.521" FontSize="13" SelectionChanged="AvalaibiltySh_SelectionChanged">
+                       
+                    </ComboBox>
+                    <Label Content="Status :" HorizontalAlignment="Left" Margin="494,75,0,295" Foreground="White" FontFamily="Yu Gothic UI" FontWeight="Bold" Width="114" FontSize="16"/>
+
+                </Grid>
+
+
+            </TabItem>
+        </TabControl>
+
+
+    </Grid>
+</UserControl>

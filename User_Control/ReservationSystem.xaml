@@ -1,0 +1,487 @@
+﻿<UserControl x:Class="Hotel_Managment_System.User_Control.ReservationSystem"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Hotel_Managment_System.User_Control"
+             mc:Ignorable="d" 
+             d:DesignHeight="542" d:DesignWidth="918">
+    <UserControl.Resources>
+        
+
+            <!-- يجعل التحديد يبقى أزرق حتى لو فقد التركيز -->
+            <Style TargetType="DataGridCell">
+                <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+            </Style>
+
+        <Style TargetType="DataGridRow">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="Black"/>
+
+            <Style.Triggers>
+
+                <!-- عندما يكون محدد -->
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="#0078D7"/>
+                    <Setter Property="Foreground" Value="White"/>
+                </Trigger>
+
+                <!-- عندما يكون محدد لكن فقد التركيز -->
+                <MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property="IsSelected" Value="True"/>
+                        <Condition Property="Selector.IsSelectionActive" Value="False"/>
+                    </MultiTrigger.Conditions>
+
+                    <Setter Property="Background" Value="#0078D7"/>
+                    <Setter Property="Foreground" Value="White"/>
+                </MultiTrigger>
+
+            </Style.Triggers>
+        </Style>
+        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#0078D7"/>
+        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="White"/>
+
+        <!-- لون التحديد عندما يفقد الـ Grid التركيز -->
+        <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}" Color="#0078D7"/>
+        <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightTextBrushKey}" Color="White"/>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="Black"/>
+                <GradientStop Color="#FF191717" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <TabControl Margin="64,68,66,40" TabStripPlacement="Bottom" BorderBrush="Black">
+            <TabControl.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="#FF191717" Offset="1"/>
+                </LinearGradientBrush>
+            </TabControl.Background>
+            <TabItem Header="Add Reservations" BorderBrush="{x:Null}" FontWeight="Bold" FontFamily="Yu Gothic UI">
+                <Grid Margin="0,0,0,2">
+                    <Grid.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="Black"/>
+                            <GradientStop Color="#FF191717" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Grid.Background>
+                    <Label Content="Clinet : " HorizontalAlignment="Left" Margin="16,60,0,315" Height="29" Foreground="White" FontFamily="Yu Gothic UI" FontWeight="Bold" FontSize="16"/>
+                    <Label Content="Room :" HorizontalAlignment="Left" Margin="399,60,0,315" Height="29" Foreground="White" FontFamily="Yu Gothic UI" FontWeight="Bold" FontSize="16"/>
+                    <Label Content="Add Reservation : " HorizontalAlignment="Left" Margin="10,10,0,364" Foreground="White" FontFamily="Yu Gothic UI" FontWeight="Bold" Width="142" FontSize="16"/>
+                    <Button
+                        Content="Add Reservation"
+                        Height="34"
+                        FontFamily="Yu Gothic UI"
+                        FontWeight="Bold"
+                        FontSize="14"
+                        Foreground="White"
+                        BorderThickness="0"
+                        Focusable="False"
+                        OverridesDefaultStyle="True" Margin="316,360,316,10"
+                        Cursor="Hand" Click="Button_Click">
+
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+
+                                <Border x:Name="border"
+                                    CornerRadius="6"
+                                    Background="#FF25C6DC"
+                                    RenderTransformOrigin="0.5,0.5">
+
+                                    <Border.RenderTransform>
+                                        <ScaleTransform ScaleX="1" ScaleY="1"/>
+                                    </Border.RenderTransform>
+
+                                    <ContentPresenter
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"/>
+                                </Border>
+
+                                <ControlTemplate.Triggers>
+
+                                    <!-- HOVER ENTER -->
+                                    <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                                        <BeginStoryboard HandoffBehavior="SnapshotAndReplace">
+                                            <Storyboard>
+                                                <DoubleAnimation
+                                                    Storyboard.TargetName="border"
+                                                    Storyboard.TargetProperty="RenderTransform.ScaleX"
+                                                    To="1.04"
+                                                    Duration="0:0:0.15"/>
+                                                <DoubleAnimation
+                                                    Storyboard.TargetName="border"
+                                                    Storyboard.TargetProperty="RenderTransform.ScaleY"
+                                                    To="1.04"
+                                                    Duration="0:0:0.15"/>
+                                                <ColorAnimation
+                                                    Storyboard.TargetName="border"
+                                                    Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                    To="#FF3ED8EE"
+                                                    Duration="0:0:0.15"/>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger>
+
+                                    <!-- HOVER LEAVE -->
+                                    <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                                        <BeginStoryboard HandoffBehavior="SnapshotAndReplace">
+                                            <Storyboard>
+                                                <DoubleAnimation
+                                                    Storyboard.TargetName="border"
+                                                    Storyboard.TargetProperty="RenderTransform.ScaleX"
+                                                    To="1"
+                                                    Duration="0:0:0.15"/>
+                                                <DoubleAnimation
+                                                    Storyboard.TargetName="border"
+                                                    Storyboard.TargetProperty="RenderTransform.ScaleY"
+                                                    To="1"
+                                                    Duration="0:0:0.15"/>
+                                                <ColorAnimation
+                                                    Storyboard.TargetName="border"
+                                                    Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                    To="#FF25C6DC"
+                                                    Duration="0:0:0.15"/>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger>
+
+                                    <!-- PRESSED -->
+                                    <Trigger Property="IsPressed" Value="True">
+                                        <Trigger.EnterActions>
+                                            <BeginStoryboard>
+                                                <Storyboard>
+                                                    <DoubleAnimation
+                                                        Storyboard.TargetName="border"
+                                                        Storyboard.TargetProperty="RenderTransform.ScaleX"
+                                                        To="0.96"
+                                                        Duration="0:0:0.06"/>
+                                                    <DoubleAnimation
+                                                        Storyboard.TargetName="border"
+                                                        Storyboard.TargetProperty="RenderTransform.ScaleY"
+                                                        To="0.96"
+                                                        Duration="0:0:0.06"/>
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </Trigger.EnterActions>
+                                    </Trigger>
+
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                    <TextBox x:Name="Romres"
+                        HorizontalAlignment="Left"
+                        Margin="398,90,0,287"
+                        Width="369"
+                        FontSize="14"
+                        BorderBrush="{x:Null}"
+                        SelectionBrush="#FF25439E"
+                        SelectionTextBrush="{x:Null}"
+                        VerticalScrollBarVisibility="Disabled"
+                        HorizontalScrollBarVisibility="Hidden" TextChanged="Romres_TextChanged">
+
+                        <TextBox.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="0.248"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </TextBox.RenderTransform>
+
+                        <TextBox.Style>
+                            <Style TargetType="{x:Type TextBox}">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type TextBox}">
+                                            <Grid Background="{TemplateBinding Background}">
+                                                <!-- النص -->
+                                                <ScrollViewer x:Name="PART_ContentHost"/>
+
+                                                <!-- Placeholder -->
+                                                <TextBlock Text="Search By Number,ID,Type,Price...."
+                                                    Foreground="#FF9E9E9E"
+                                                    Margin="4,0,0,0"
+                                                    VerticalAlignment="Center"
+                                                    IsHitTestVisible="False"
+                                                    Visibility="Collapsed"
+                                                    x:Name="Placeholder" FontSize="12"/>
+                                            </Grid>
+
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="Text" Value="">
+                                                    <Setter TargetName="Placeholder"
+                                                        Property="Visibility"
+                                                        Value="Visible"/>
+                                                </Trigger>
+                                                <Trigger Property="Text" Value="{x:Null}">
+                                                    <Setter TargetName="Placeholder"
+                                                        Property="Visibility"
+                                                        Value="Visible"/>
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </TextBox.Style>
+
+                    </TextBox>
+                    <DataGrid x:Name="ClientsGridres"
+     Margin="16,146,419,94"
+     Foreground="#FF191717"
+     Background="White"
+     HeadersVisibility="Column"
+     HorizontalGridLinesBrush="Black"
+     VerticalGridLinesBrush="Black"
+     MinColumnWidth="110"
+     SelectionMode="Single"
+     SelectionUnit="FullRow"
+     IsReadOnly="True"
+     AutoGenerateColumns="False"
+     CanUserAddRows="False" 
+                            >
+                       
+
+                        <DataGrid.Columns>
+
+                            <!-- ID (غير قابل للتعديل) -->
+                            <DataGridTextColumn Header="Client ID"
+             Binding="{Binding ID}"
+             IsReadOnly="True"/>
+                            <DataGridTextColumn Header="National ID" Binding="{Binding NationalId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                            <!-- Editable columns -->
+                            <DataGridTextColumn Header="First Name"
+             Binding="{Binding FirstName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                            <DataGridTextColumn Header="Last Name"
+             Binding="{Binding LastName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                            <DataGridTextColumn Header="Phone"
+             Binding="{Binding Phone, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                            <DataGridTextColumn Header="Adresse"
+             Binding="{Binding Adress, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+
+
+
+                            <!-- Delete Button -->
+                            
+
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <DataGrid x:Name="RoomGridres"
+     Margin="396,148,7,96"
+     Foreground="#FF191717"
+     Background="White"
+     HeadersVisibility="Column"
+     HorizontalGridLinesBrush="Black"
+     VerticalGridLinesBrush="Black"
+     MinColumnWidth="110"
+    SelectionMode="Single"
+     SelectionUnit="FullRow"
+     IsReadOnly="True"
+     AutoGenerateColumns="False"
+     CanUserAddRows="False" RenderTransformOrigin="0.5,0.5" >
+                        <DataGrid.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform AngleY="-0.364"/>
+                                <RotateTransform/>
+                                <TranslateTransform Y="-0.744"/>
+                            </TransformGroup>
+                        </DataGrid.RenderTransform>
+                        
+                        <DataGrid.Columns>
+
+                            <!-- ID (غير قابل للتعديل) -->
+                            <DataGridTextColumn Header="Room ID"
+             Binding="{Binding RoomID}"
+             IsReadOnly="True"/>
+
+                            <!-- Editable columns -->
+                            <DataGridTextColumn Header="Room Number"
+             Binding="{Binding RoomNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                            <DataGridTextColumn Header="Room Type"
+             Binding="{Binding RoomType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                            <DataGridTextColumn Header="Price"
+             Binding="{Binding PricePerNight, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                            <DataGridTextColumn Header="Status"
+             Binding="{Binding Status, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                           
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <TextBox x:Name="Clientres"
+                        HorizontalAlignment="Left"
+                        Margin="15,90,0,287"
+                        Width="348"
+                        FontSize="14"
+                        BorderBrush="{x:Null}"
+                        SelectionBrush="#FF25439E"
+                        SelectionTextBrush="{x:Null}"
+                        VerticalScrollBarVisibility="Disabled"
+                        HorizontalScrollBarVisibility="Hidden" TextChanged="Romres_TextChanged">
+
+                        <TextBox.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="0.248"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </TextBox.RenderTransform>
+
+                        <TextBox.Style>
+                            <Style TargetType="{x:Type TextBox}">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type TextBox}">
+                                            <Grid Background="{TemplateBinding Background}">
+                                                <!-- النص -->
+                                                <ScrollViewer x:Name="PART_ContentHost"/>
+
+                                                <!-- Placeholder -->
+                                                <TextBlock Text="Search By Number,ID,Type,Price...."
+                                                    Foreground="#FF9E9E9E"
+                                                    Margin="4,0,0,0"
+                                                    VerticalAlignment="Center"
+                                                    IsHitTestVisible="False"
+                                                    Visibility="Collapsed"
+                                                    x:Name="Placeholder" FontSize="12"/>
+                                            </Grid>
+
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="Text" Value="">
+                                                    <Setter TargetName="Placeholder"
+                                                        Property="Visibility"
+                                                        Value="Visible"/>
+                                                </Trigger>
+                                                <Trigger Property="Text" Value="{x:Null}">
+                                                    <Setter TargetName="Placeholder"
+                                                        Property="Visibility"
+                                                        Value="Visible"/>
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </TextBox.Style>
+
+                    </TextBox>
+                    <Label Content="Check Out : " HorizontalAlignment="Left" Margin="16,313,0,62" Height="29" Foreground="White" FontFamily="Yu Gothic UI" FontWeight="Bold" FontSize="16"/>
+                    <DatePicker HorizontalAlignment="Left" Margin="16,347,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Height="30" Width="155" FontWeight="Bold" FirstDayOfWeek="Tuesday" Name="Datapicker"/>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="Enter" Header="Manage Reservations" BorderBrush="{x:Null}" FontWeight="Bold" FontFamily="Yu Gothic UI" Height="20" VerticalAlignment="Top">
+                <Grid>
+                    <TextBox x:Name="shfirstname" HorizontalAlignment="Left" Margin="34,85,0,297" TextWrapping="NoWrap" Width="192" BorderBrush="{x:Null}" SelectionBrush="#FF25439E" FontSize="14" SelectionTextBrush="{x:Null}" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Hidden" TextChanged="shfirstname_TextChanged"/>
+                    <Label Content="Search Reservation :" HorizontalAlignment="Left" Margin="10,10,0,367" Height="29" Foreground="White" FontFamily="Yu Gothic UI" FontWeight="Bold" FontSize="16"/>
+                    <Label Content="First Name :" HorizontalAlignment="Left" Margin="34,52,0,325" Height="29" Foreground="White" FontFamily="Yu Gothic UI" FontWeight="Bold" Width="96" FontSize="16"/>
+                    <TextBox x:Name="shlastname" HorizontalAlignment="Left" Margin="256,86,0,296" TextWrapping="NoWrap" Width="208" BorderBrush="{x:Null}" SelectionBrush="#FF25439E" FontSize="14" SelectionTextBrush="{x:Null}" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Hidden" TextChanged="shlastname_TextChanged"/>
+                    <Label Content="Last Name :" HorizontalAlignment="Left" Margin="256,52,0,325" Height="29" Foreground="White" FontFamily="Yu Gothic UI" FontWeight="Bold" Width="98" FontSize="16"/>
+                    <TextBox x:Name="phonesh" HorizontalAlignment="Left" Margin="493,85,0,297" TextWrapping="NoWrap" Width="192" BorderBrush="{x:Null}" SelectionBrush="#FF25439E" FontSize="14" SelectionTextBrush="{x:Null}" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Hidden" TextChanged="phonesh_TextChanged"/>
+                    <Label Content="Phone :" HorizontalAlignment="Left" Margin="493,56,0,321" Height="29" Foreground="White" FontFamily="Yu Gothic UI" FontWeight="Bold" Width="78" FontSize="16"/>
+                    <TextBox x:Name="nationalid" HorizontalAlignment="Left" Margin="34,149,0,233" TextWrapping="NoWrap" Width="192" BorderBrush="{x:Null}" SelectionBrush="#FF25439E" FontSize="14" SelectionTextBrush="{x:Null}"  VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Hidden" TextChanged="nationalid_TextChanged"/>
+                    <Label Content="National ID :" HorizontalAlignment="Left" Margin="34,115,0,262" Height="29" Foreground="White" FontFamily="Yu Gothic UI" FontWeight="Bold" Width="108" FontSize="16"/>
+                    <DataGrid x:Name="ReservationGrid"
+               Margin="0,229,0,0"
+               Foreground="#FF191717"
+               Background="White"
+               HeadersVisibility="Column"
+               HorizontalGridLinesBrush="Black"
+               VerticalGridLinesBrush="Black"
+               MinColumnWidth="110"
+               
+               IsReadOnly="False"
+               AutoGenerateColumns="False"
+               CanUserAddRows="False">
+
+                        <DataGrid.Columns>
+
+                            <!-- ID (غير قابل للتعديل) -->
+                            <DataGridTextColumn Header="ID"
+                       Binding="{Binding RESID}"
+                       IsReadOnly="True"/>
+                            <DataGridTextColumn Header="First Name" Binding="{Binding FirstNameR, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                            <!-- Editable columns -->
+                            <DataGridTextColumn Header="Last Name"
+                       Binding="{Binding LastNameR, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                            <DataGridTextColumn Header="Check In Date"
+                       Binding="{Binding CheckINR, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                            <DataGridTextColumn Header="Check Out Date"
+                       Binding="{Binding CheckoutR, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                            <DataGridTextColumn Header="National ID"
+                       Binding="{Binding NationalIdR, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                            <DataGridTextColumn Header="Phone"
+                             Binding="{Binding phoneR, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                            <DataGridTextColumn Header="Status"
+Binding="{Binding statusR, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                            <DataGridTextColumn Header="Total Price"
+Binding="{Binding totalpriceR, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+
+
+                            <!-- Delete Button -->
+                            <DataGridTemplateColumn >
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button
+                                   Width="20"
+                                    Height="20" BorderBrush="White" Foreground="White" Cursor="Hand" Click="Deletres">
+                                            <Button.Background>
+                                                <ImageBrush ImageSource="/User_Control/supprimer.png"/>
+                                            </Button.Background>
+                                            <Button.Style>
+
+                                                <Style TargetType="{x:Type Button}">
+
+
+                                                    <Setter Property="Background" Value="LightGray"/>
+                                                    <Setter Property="BorderBrush" Value="DarkGray"/>
+                                                    <Setter Property="BorderThickness" Value="1"/>
+                                                    <Setter Property="Template">
+                                                        <Setter.Value>
+                                                            <ControlTemplate TargetType="{x:Type Button}">
+                                                                <Border Background="{TemplateBinding Background}"
+                                                           BorderBrush="{TemplateBinding BorderBrush}"
+                                                           BorderThickness="{TemplateBinding BorderThickness}">
+                                                                    <ContentPresenter HorizontalAlignment="Center"
+                                                               VerticalAlignment="Top"
+/>
+                                                                </Border>
+                                                            </ControlTemplate>
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                </Style>
+                                            </Button.Style>
+                                        </Button>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                </Grid>
+
+
+            </TabItem>
+        </TabControl>
+
+
+    </Grid>
+
+</UserControl>

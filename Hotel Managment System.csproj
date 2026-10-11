@@ -30,12 +30,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="AMRConnector">
-      <HintPath>..\..\..\Downloads\AMRConnector.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
-  <ItemGroup>
     <Resource Include="dashboard-2-512.png" />
     <Resource Include="eye.png" />
     <Resource Include="hidden.png" />

@@ -7,6 +7,8 @@
         xmlns:User_Control="clr-namespace:Hotel_Managment_System.User_Control" x:Class="Hotel_Managment_System.Home"
         mc:Ignorable="d"
         Title="Dashboard" Height="720" Width="1280" ResizeMode="NoResize" WindowState="Maximized" WindowStartupLocation="CenterScreen" WindowStyle="None">
+
+
     <Grid>
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -34,7 +36,7 @@
                 </TransformGroup>
             </Label.RenderTransform>
         </Label>
-        <Button HorizontalAlignment="Left" Margin="47,189,0,0" VerticalAlignment="Top" Height="53" Width="149" Background="{x:Null}" Foreground="White" FontSize="18" FontFamily="Yu Gothic UI" BorderBrush="{x:Null}" Content="       Dashboard" Cursor="Hand">
+        <Button HorizontalAlignment="Left" Margin="47,189,0,0" VerticalAlignment="Top" Height="53" Width="149" Background="{x:Null}" Foreground="White" FontSize="18" FontFamily="Yu Gothic UI" BorderBrush="{x:Null}" Content="       Dashboard" Cursor="Hand" Click="Button_Click_6">
             <Button.RenderTransform>
                 <ScaleTransform x:Name="TextScaleBtn1" ScaleX="1" ScaleY="1"/>
             </Button.RenderTransform>
@@ -112,7 +114,7 @@ To="1" Duration="0:0:0.1"/>
 
         </Button>
         <Image HorizontalAlignment="Left" Height="22" Margin="47,194,0,0" VerticalAlignment="Top" Width="27" Source="/dashboard-2-512.png"/>
-        <Button HorizontalAlignment="Left" Margin="47,247,0,0" VerticalAlignment="Top" Height="52" Width="149" Background="{x:Null}" Foreground="White" FontSize="18" FontFamily="Yu Gothic UI" BorderBrush="{x:Null}" Content="Client" Cursor="Hand">
+        <Button HorizontalAlignment="Left" Margin="47,247,0,0" VerticalAlignment="Top" Height="52" Width="149" Background="{x:Null}" Foreground="White" FontSize="18" FontFamily="Yu Gothic UI" BorderBrush="{x:Null}" Content="Client" Cursor="Hand" Click="Button_Click_3">
             <Button.RenderTransform>
                 <ScaleTransform x:Name="TextScaleBtn3" ScaleX="1" ScaleY="1"/>
             </Button.RenderTransform>
@@ -190,7 +192,7 @@ To="1" Duration="0:0:0.1"/>
 
         </Button>
         <Image HorizontalAlignment="Left" Height="22" Margin="47,251,0,0" VerticalAlignment="Top" Width="27" Source="/user-4-512.png"/>
-        <Button HorizontalAlignment="Left" Margin="47,303,0,0" VerticalAlignment="Top" Height="54" Width="149" Background="{x:Null}" Foreground="White" FontSize="18" FontFamily="Yu Gothic UI" BorderBrush="{x:Null}" Content="Room" Cursor="Hand">
+        <Button HorizontalAlignment="Left" Margin="47,303,0,0" VerticalAlignment="Top" Height="54" Width="149" Background="{x:Null}" Foreground="White" FontSize="18" FontFamily="Yu Gothic UI" BorderBrush="{x:Null}" Content="Room" Cursor="Hand" Click="Button_Click_4">
             <Button.RenderTransform>
                 <ScaleTransform x:Name="TextScaleBtn5" ScaleX="1" ScaleY="1"/>
             </Button.RenderTransform>
@@ -268,7 +270,7 @@ To="1" Duration="0:0:0.1"/>
 
         </Button>
         <Image HorizontalAlignment="Left" Height="22" Margin="47,308,0,0" VerticalAlignment="Top" Width="27" Source="/home-3-512.png"/>
-        <Button HorizontalAlignment="Left" Margin="47,358,0,0" VerticalAlignment="Top" Height="54" Width="149" Background="{x:Null}" Foreground="White" FontSize="18" FontFamily="Yu Gothic UI" BorderBrush="{x:Null}" Content="         Reservation" Cursor="Hand">
+        <Button HorizontalAlignment="Left" Margin="47,358,0,0" VerticalAlignment="Top" Height="54" Width="149" Background="{x:Null}" Foreground="White" FontSize="18" FontFamily="Yu Gothic UI" BorderBrush="{x:Null}" Content="         Reservation" Cursor="Hand" Click="Button_Click_5">
             <Button.RenderTransform>
                 <ScaleTransform x:Name="TextScaleBtn6" ScaleX="1" ScaleY="1"/>
             </Button.RenderTransform>
@@ -508,10 +510,63 @@ To="1" Duration="0:0:0.1"/>
 
         </Button>
         <User_Control:UserControlSettings x:Name="Settings" HorizontalAlignment="Left" Margin="229,133,0,0" VerticalAlignment="Top" Visibility="Hidden" />
-        <User_Control:ClientMnager HorizontalAlignment="Left" Margin="250,148,0,0" VerticalAlignment="Top" Visibility="Visible"/>
+        <User_Control:ClientMnager x:Name="ClientsStteings" HorizontalAlignment="Left" Margin="229,133,0,0"  VerticalAlignment="Top" Visibility="Hidden"/>
+        <User_Control:RoomService x:Name="RoomManager" HorizontalAlignment="Left" Margin="229,133,0,0"  VerticalAlignment="Top" Width="918" Visibility="Hidden"/>
+        <User_Control:ReservationSystem x:Name="ReservationSystem" HorizontalAlignment="Left" Margin="229,133,0,0"  VerticalAlignment="Top" Width="908" Visibility="Hidden"/>
+        <Grid x:Name="Dashbord">
+            <Border CornerRadius="10"
+    Background="#FF6ED4B1"
+    Padding="10"
+    BorderBrush="Gray"
+    BorderThickness="1" Margin="747,192,299,422" Width="234" Height="105">
+                <Grid>
+                    <Label Content="Total Rooms :" Foreground="White" FontSize="20" Margin="0,0,74,45" FontFamily="Yu Gothic UI" FontWeight="Bold"/>
+                    <Label x:Name="TotalRoomsText"  Foreground="White" FontSize="20" Margin="0,43,0,0" FontWeight="Bold" FontFamily="Yu Gothic UI"/>
+                </Grid>
+
+
+            </Border>
+            <Border CornerRadius="10"
+    Background="#FFA66DD4"
+    Padding="10"
+    BorderBrush="Gray"
+    BorderThickness="1" Margin="986,192,60,422" Width="234" Height="105">
+
+                <Grid>
+                    <Label Content="Total Reservations :" Foreground="White" FontSize="20" Margin="0,0,24,45" FontFamily="Yu Gothic UI" FontWeight="Bold"/>
+                    <Label x:Name="TotalReservationsText" Foreground="White" FontSize="20" Margin="0,43,0,0" FontFamily="Yu Gothic UI" FontWeight="Bold"/>
+                </Grid>
+
+            </Border>
+            <Border CornerRadius="10"
+    Background="#FF62C7FF"
+    Padding="10"
+    BorderBrush="Gray"
+    BorderThickness="1" Margin="508,192,538,422" Width="234" Height="105">
+                <Grid>
+                    <Label Content="Total Clients :" Foreground="White" FontSize="20" Margin="0,0,73,50" FontFamily="Yu Gothic UI" FontWeight="Bold"/>
+                    <Label x:Name="TotalCustomersText"  Foreground="White" FontSize="20" Margin="0,43,0,0" FontWeight="Bold"/>
+                </Grid>
 
 
 
+            </Border>
+            <Border CornerRadius="10"
+    Background="#FF3A76EF"
+    Padding="10"
+    BorderBrush="Gray"
+    BorderThickness="1" Margin="269,192,777,422" Width="234" Height="105">
+                <Grid>
+                    <Label Content="Total Revenue :" Foreground="White" FontSize="20" Margin="0,0,55,50" FontFamily="Yu Gothic UI" FontWeight="Bold"/>
+                    <Label x:Name="TotalRevenueText"  Foreground="White" FontSize="20" Margin="0,43,0,0" FontWeight="Bold"/>
+                </Grid>
+
+
+
+            </Border>
+
+        </Grid>
+        
 
 
     </Grid>

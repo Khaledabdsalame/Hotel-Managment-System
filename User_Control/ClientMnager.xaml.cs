@@ -118,13 +118,16 @@ namespace Hotel_Managment_System.User_Control
             using var cmd = con.CreateCommand();
             // Create Users table if it does not exist. Column names match usages throughout the control.
             cmd.CommandText = @"
- CREATE TABLE IF NOT EXISTS Customers (
-    customer_id     INTEGER PRIMARY KEY AUTOINCREMENT,
-    first_name      TEXT NOT NULL,
-    last_name       TEXT NOT NULL,
-    phone           TEXT UNIQUE,
-    address         TEXT,
-    national_id     TEXT
+CREATE TABLE IF NOT EXISTS Reservations (
+    ReservationID INTEGER PRIMARY KEY AUTOINCREMENT,
+    customer_id INTEGER NOT NULL,
+    RoomID INTEGER NOT NULL,
+    CheckInDate TEXT NOT NULL,
+    CheckOutDate TEXT NOT NULL,
+    Status TEXT DEFAULT 'Booked',
+    TotalPrice REAL,
+    FOREIGN KEY (customer_id) REFERENCES Customers(customer_id),
+    FOREIGN KEY (RoomID) REFERENCES Rooms(RoomID)
 );
     ";
             cmd.ExecuteNonQuery();
@@ -177,7 +180,7 @@ namespace Hotel_Managment_System.User_Control
             else
             {
                 AddUsersInforamtions();
-                MessageBox.Show("User Added Successfully", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Client Added Successfully", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
                 firstnamecl.Text = "";
                 lastnamecl.Text = "";
                 adress.Text = "";

@@ -45,6 +45,29 @@ CREATE TABLE IF NOT EXISTS Customers (
     address         TEXT,
     national_id     TEXT
 );
+CREATE TABLE IF NOT EXISTS Rooms (
+    RoomID INTEGER PRIMARY KEY AUTOINCREMENT,
+    RoomNumber TEXT NOT NULL UNIQUE,
+    RoomType TEXT,
+    PricePerNight REAL NOT NULL,
+    Status TEXT DEFAULT 'Available'
+);
+CREATE TABLE IF NOT EXISTS Reservations (
+    ReservationID INTEGER PRIMARY KEY AUTOINCREMENT,
+    customer_id INTEGER NOT NULL,
+    RoomID INTEGER NOT NULL,
+    FirstName TEXT NOT NULL,
+    LastName TEXT NOT NULL,
+    CheckInDate TEXT NOT NULL,
+    CheckOutDate TEXT NOT NULL,
+    National_id     TEXT,
+    Phone           TEXT,
+    Status TEXT DEFAULT 'Booked',
+    TotalPrice REAL,
+    FOREIGN KEY (customer_id) REFERENCES Customers(customer_id),
+    FOREIGN KEY (RoomID) REFERENCES Rooms(RoomID)
+);
+
 INSERT INTO Users (username, first_name, last_name, job_description, email, phone, user_password) 
 VALUES ('admin', 'John', 'Doe', 'System Administrator', 'admin@example.com', '+1234567890', 'admin123');";
                 createTableCmd.ExecuteNonQuery();
